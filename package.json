@@ -1,0 +1,13 @@
+{
+  "name": "github-project-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "@octokit/graphql": "^7.0.2",
+    "dotenv": "^16.4.7"
+  },
+  "scripts": {
+    "archive-item": "node scripts/archive-item.js"
+  }
+}

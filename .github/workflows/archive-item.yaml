@@ -1,0 +1,29 @@
+
+name: Monthly Archive Visanto Items
+
+on:
+  schedule:
+    - cron: '0 2 1-7 * 3' # Run this once Wednesday a month
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  archive-item:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run archive script
+        env:
+          PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        run: npm run archive-item
